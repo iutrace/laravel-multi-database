@@ -23,7 +23,6 @@ class WipeCommandTest extends TestCase
 
     public function testWipeCommandWithDatabase()
     {
-        $connections = config('database.connections');
         $this->artisan('db:wipe --database testing2')
             ->assertExitCode(0);
 
