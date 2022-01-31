@@ -1,5 +1,5 @@
 {
-  "name": "iutrace/laravel-multi-databases",
+  "name": "iutrace/laravel-multi-database",
   "description": "Multiple databases connections commands for Laravel",
   "keywords": [
     "laravel",
