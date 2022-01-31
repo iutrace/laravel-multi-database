@@ -25,7 +25,7 @@ class WipeCommandTest extends TestCase
     {
         $connections = config('database.connections');
         $this->artisan('db:wipe --database testing2')
-            ->assertSuccessful();
+            ->assertExitCode(0);
 
         $this->assertTrue(Schema::connection('testing')->hasTable('test'));
         $this->assertFalse(Schema::connection('testing2')->hasTable('test'));
@@ -36,7 +36,7 @@ class WipeCommandTest extends TestCase
         $connections = config('database.connections');
         $this->artisan('db:wipe')
             ->expectsQuestion('This will try to wipe following connections [ ' . implode(', ', array_keys($connections)) . ' ] are you sure?', 'no')
-            ->assertFailed();
+            ->assertExitCode(1);
 
         $this->assertTrue(Schema::connection('testing')->hasTable('test'));
         $this->assertTrue(Schema::connection('testing2')->hasTable('test'));
@@ -47,7 +47,7 @@ class WipeCommandTest extends TestCase
         $connections = config('database.connections');
         $this->artisan('db:wipe')
             ->expectsQuestion('This will try to wipe following connections [ ' . implode(', ', array_keys($connections)) . ' ] are you sure?', 'yes')
-            ->assertSuccessful();
+            ->assertExitCode(0);
 
         $this->assertFalse(Schema::connection('testing')->hasTable('test'));
         $this->assertFalse(Schema::connection('testing2')->hasTable('test'));
@@ -56,7 +56,7 @@ class WipeCommandTest extends TestCase
     public function testWipeCommandWithForce()
     {
         $this->artisan('db:wipe --force')
-            ->assertSuccessful();
+            ->assertExitCode(0);
 
         $this->assertFalse(Schema::connection('testing')->hasTable('test'));
         $this->assertFalse(Schema::connection('testing2')->hasTable('test'));
