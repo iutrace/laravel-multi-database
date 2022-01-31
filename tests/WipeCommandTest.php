@@ -1,15 +1,10 @@
 <?php
 
-
 namespace Iutrace\MultiDatabases\Tests;
 
-
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
-use Iutrace\MultiDatabases\MultiDatabaseProvider;
 
 class WipeCommandTest extends TestCase
 {
@@ -24,7 +19,6 @@ class WipeCommandTest extends TestCase
         Schema::connection('testing2')->create('test', function (Blueprint $table) {
             $table->string('test');
         });
-
     }
 
     public function testWipeCommandWithDatabase()
