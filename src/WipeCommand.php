@@ -1,6 +1,6 @@
 <?php
 
-namespace Iutrace\MultiDatabases;
+namespace Iutrace\Database;
 
 use Illuminate\Database\Console\WipeCommand as LaravelWipeCommand;
 

@@ -30,18 +30,18 @@
   },
   "autoload": {
     "psr-4": {
-      "Iutrace\\MultiDatabases\\": "src"
+      "Iutrace\\Database\\": "src"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Iutrace\\MultiDatabases\\Tests\\": "tests"
+      "Iutrace\\Database\\Tests\\": "tests"
     }
   },
   "extra": {
     "laravel": {
       "providers": [
-        "Iutrace\\MultiDatabases\\MultiDatabaseServiceProvider"
+        "Iutrace\\Database\\MultiDatabaseProvider"
       ]
     }
   },

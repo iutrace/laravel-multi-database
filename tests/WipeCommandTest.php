@@ -1,6 +1,6 @@
 <?php
 
-namespace Iutrace\MultiDatabases\Tests;
+namespace Iutrace\Database\Tests;
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Config;
