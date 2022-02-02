@@ -21,8 +21,11 @@ class WipeCommand extends LaravelWipeCommand
         $connections = config('database.connections');
 
         if ($this->option('force') == false) {
-            $answer = $this->output->confirm('This will try to wipe following connections [ '. implode(', ', array_keys($connections)) .' ] are you sure?', false);
-            if ($answer == 'no') {
+            $this->alert('This will try to wipe following connections [ '. implode(', ', array_keys($connections)) .' ]');
+
+            $answer = $this->output->confirm('Do you really wish to run this command?');
+            if (!$answer || $answer == 'no') {
+                $this->comment('Command Canceled!');
                 return 1;
             }
         }

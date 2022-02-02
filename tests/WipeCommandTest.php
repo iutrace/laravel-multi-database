@@ -32,9 +32,8 @@ class WipeCommandTest extends TestCase
 
     public function testWipeCommandWithQuestionNo()
     {
-        $connections = config('database.connections');
         $this->artisan('db:wipe')
-            ->expectsQuestion('This will try to wipe following connections [ ' . implode(', ', array_keys($connections)) . ' ] are you sure?', 'no')
+            ->expectsQuestion('Do you really wish to run this command?', 'no')
             ->assertExitCode(1);
 
         $this->assertTrue(Schema::connection('testing')->hasTable('test'));
@@ -43,9 +42,8 @@ class WipeCommandTest extends TestCase
 
     public function testWipeCommandWithQuestionYes()
     {
-        $connections = config('database.connections');
         $this->artisan('db:wipe')
-            ->expectsQuestion('This will try to wipe following connections [ ' . implode(', ', array_keys($connections)) . ' ] are you sure?', 'yes')
+            ->expectsQuestion('Do you really wish to run this command?', 'yes')
             ->assertExitCode(0);
 
         $this->assertFalse(Schema::connection('testing')->hasTable('test'));
